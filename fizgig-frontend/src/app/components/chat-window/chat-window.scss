@@ -1,0 +1,77 @@
+@layer components {
+  .chat-window {
+    @apply flex flex-col h-[600px] max-h-[80vh];
+  }
+
+  .chat-header {
+    @apply px-4 py-3 border-b border-border;
+  }
+
+  .chat-product-info {
+    @apply flex items-center gap-4;
+
+    h3 {
+      @apply m-0 text-lg;
+    }
+
+    p {
+      @apply mt-1 text-primary font-medium;
+    }
+  }
+
+  .chat-product-image {
+    @apply w-[50px] h-[50px] rounded-[0.5rem] object-cover;
+  }
+
+  .chat-messages {
+    @apply flex-grow overflow-y-auto p-4 flex flex-col gap-4;
+  }
+
+  .message {
+    @apply max-w-[70%];
+
+    &.user-message {
+      @apply self-end;
+
+      .message-content {
+        @apply bg-primary text-white rounded-t-xl rounded-bl-sm;
+      }
+
+      .message-time {
+        @apply text-right;
+      }
+    }
+
+    &.seller-message {
+      @apply self-start;
+
+      .message-content {
+        @apply bg-muted rounded-t-xl rounded-br-sm;
+      }
+    }
+  }
+
+  .message-content {
+    @apply px-4 py-2;
+
+    p {
+      @apply m-0 break-words;
+    }
+  }
+
+  .message-time {
+    @apply block text-xs mt-1 opacity-70;
+  }
+
+  .chat-input {
+    @apply flex items-center p-4 border-t border-border gap-4;
+
+    input {
+      @apply flex-grow px-4 py-2 border border-border rounded-full outline-none focus:border-primary;
+    }
+
+    button {
+      @apply rounded-full px-6 py-2;
+    }
+  }
+}

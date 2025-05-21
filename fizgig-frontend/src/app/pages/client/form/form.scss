@@ -1,0 +1,135 @@
+.page-wrapper {
+  padding: 2rem 1rem;
+  background: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; // ✅ make it span the full page
+  box-sizing: border-box;
+}
+
+.page-title {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.create-form-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 24px;
+  margin: 0 auto;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  color: #f0f0f0;
+  box-sizing: border-box;
+
+  .success-message {
+    text-align: center;
+
+    h2 {
+      color: #7fff7f;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+  }
+
+  .create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #f0f0f0;
+      }
+
+      input,
+      textarea,
+      select {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background: #2c2c2c;
+        color: #fff;
+        font-size: 1rem;
+
+        &.error {
+          border-color: #ff5c5c;
+        }
+      }
+
+      .error-message {
+        color: #ff5c5c;
+        font-size: 0.875rem;
+        margin-top: 4px;
+      }
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+      }
+    }
+
+    .image-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      h3 {
+        font-size: 1.1rem;
+        color: #ddd;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 8px;
+        border: 1px solid #333;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        background: #4caf50;
+        color: white;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background: #45a049;
+        }
+
+        &:disabled {
+          background: #888;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

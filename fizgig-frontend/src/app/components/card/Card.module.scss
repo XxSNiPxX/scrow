@@ -1,0 +1,372 @@
+// Variables
+$background-color: #1e1e1e;
+$card-background: #2a2a2a;
+$text-color: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.7);
+$border-radius: 8px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$transition-speed: 0.2s;
+
+// Reset
+:global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:global(body) {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.5;
+}
+
+// Dashboard Layout
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-xl 0;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: $spacing-md;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      color: $text-color;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: $text-secondary;
+    max-width: 600px;
+  }
+
+  &__content {
+    margin-top: $spacing-xl;
+  }
+
+  &__section_title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+// Card Component
+.card {
+  background-color: $card-background;
+  border-radius: $border-radius;
+  overflow: hidden;
+  position: relative;
+  transition: transform $transition-speed, box-shadow $transition-speed;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &__images {
+    display: flex;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  &__image_container {
+    flex: 1;
+    overflow: hidden;
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 80px;
+    left: $spacing-md;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $text-color;
+    border: 3px solid $card-background;
+  }
+
+  &__content {
+    padding: $spacing-lg;
+    padding-top: $spacing-xl;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__identifier {
+    font-size: 0.9rem;
+    color: $text-secondary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__description {
+    margin-bottom: $spacing-md;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__creator {
+    font-size: 0.9rem;
+    color: $text-secondary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__button {
+    display: block;
+    width: calc(100% - #{$spacing-lg} * 2);
+    margin: 0 $spacing-lg $spacing-lg;
+    padding: $spacing-md;
+    background-color: transparent;
+    color: $text-color;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color $transition-speed, border-color $transition-speed;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Overlay Component
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+
+  &__content {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    background-color: $card-background;
+    border-radius: $border-radius;
+    padding: $spacing-lg;
+    overflow-y: auto;
+    z-index: 1001;
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: $text-secondary;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color $transition-speed, color $transition-speed;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: $text-color;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $text-color;
+    margin-right: $spacing-lg;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__identifier {
+    font-size: 1rem;
+    color: $text-secondary;
+  }
+
+  &__images {
+    display: flex;
+    height: 200px;
+    border-radius: $border-radius;
+    overflow: hidden;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__image_container {
+    flex: 1;
+    overflow: hidden;
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__details {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__detail_group {
+    margin-bottom: $spacing-lg;
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-sm;
+      color: $text-secondary;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+  }
+
+  &__button {
+    padding: $spacing-md $spacing-lg;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color $transition-speed, color $transition-speed;
+  }
+
+  &__button_primary {
+    background-color: #4a8cff;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #3a7ae8;
+    }
+  }
+
+  &__button_secondary {
+    background-color: transparent;
+    color: $text-color;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .dashboard {
+    padding: $spacing-md;
+
+    &__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .overlay {
+    &__content {
+      width: 95%;
+      padding: $spacing-md;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}

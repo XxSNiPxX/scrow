@@ -1,0 +1,123 @@
+/* ---------- Base Styles ---------- */
+* {
+  box-sizing: border-box;
+  border-color: hsl(0, 0%, 89.8%);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 3.9%);
+  margin: 0;
+  padding: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 3.9%);
+  --card-background: hsl(0, 0%, 98%);
+  --primary-color: hsl(0, 0%, 9%);
+  --border-color: hsl(0, 0%, 89.8%);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-xl: 24px;
+  --border-radius: 8px;
+}
+
+/* ---------- Product Card ---------- */
+.product-card {
+  background-color: #f7f7f7; /* soft grey that matches modern UIs */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product-image:hover img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: var(--spacing-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xs);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.product-type {
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.product-creator {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: auto;
+}
+
+.product-date {
+  white-space: nowrap;
+}

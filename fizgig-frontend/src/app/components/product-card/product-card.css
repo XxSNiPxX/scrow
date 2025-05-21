@@ -1,0 +1,157 @@
+/* ---------- Base Styles ---------- */
+* {
+  box-sizing: border-box;
+  border-color: hsl(0, 0%, 89.8%);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 3.9%);
+  --card-background: #2A2A2A;
+  --primary-color: hsl(0, 0%, 9%);
+  --border-color: hsl(0, 0%, 89.8%);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-xl: 24px;
+  --border-radius: 8px;
+}
+/* ---------- Product List Container ---------- */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+/* ---------- Product Card ---------- */
+.product-card {
+  background-color: var(--card-background);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+  width: calc(16.66% - 8px); /* 6 per row */
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Image Area ---------- */
+.product-image {
+  height: 80px;
+  overflow-x: auto;
+  display: flex;
+  gap: 4px;
+  border-radius: 4px;
+  scroll-snap-type: x mandatory;
+}
+
+.product-image img {
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.product-image::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Info Section ---------- */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.2;
+  max-height: 2.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-description {
+  font-size: 0.65rem;
+  color: #aaa;
+  line-height: 1.2;
+  max-height: 2.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: #ccc;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #fff;
+}
+
+.product-type {
+  background-color: #444;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.product-creator {
+  font-size: 0.6rem;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .product-card {
+    width: calc(25% - 8px); /* 4 per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    width: calc(33.33% - 8px); /* 3 per row */
+  }
+}
+
+@media (max-width: 500px) {
+  .product-card {
+    width: 100%; /* full width */
+  }
+}

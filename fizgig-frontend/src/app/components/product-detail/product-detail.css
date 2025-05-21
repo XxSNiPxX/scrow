@@ -1,0 +1,100 @@
+.product-detail {
+  width: 100%;
+  position: relative;
+  padding-bottom: 4rem; /* Prevent overlap */
+}
+
+.product-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; /* var(--spacing-lg) ~ 2rem */
+}
+
+.product-detail-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.product-id {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; /* var(--spacing-xl) ~ 3rem */
+}
+
+@media (max-width: 768px) {
+  .product-detail-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-detail-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem; /* var(--radius) */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* example of var(--shadow) */
+}
+
+.product-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* var(--spacing-lg) ~ 2rem */
+  justify-content: flex-start; /* Align items at the top */
+  align-items: flex-start;     /* Ensure content aligns to left */
+}
+
+.info-section h3 {
+  margin-bottom: 1rem; /* var(--spacing-sm) ~ 1rem */
+  font-size: 1.2rem;
+}
+
+.info-section p {
+  line-height: 1.6;
+  color: #444;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; /* var(--spacing-md) ~ 1.5rem */
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.product-detail-actions {
+  /* Remove absolute positioning */
+  margin-top: 2rem; /* Pushes the button down to stay below the info section */
+}
+
+.chat-button {
+  padding: 1rem 3rem; /* var(--spacing-sm/xl) ~ 1rem / 3rem */
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  align-self: flex-start; /* Aligns the button to the left */
+  transition: background-color 0.3s ease;
+}
+
+.chat-button:hover {
+  background-color: #333;
+}
